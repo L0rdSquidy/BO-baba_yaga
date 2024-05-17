@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.SearchService;
 using UnityEngine;
 
 public class GetKey : MonoBehaviour
@@ -9,18 +10,21 @@ public class GetKey : MonoBehaviour
     public GameObject keyText2;
     public TMP_Text keyText;
     public GameObject PickUpText;
-    private int keys = 0;
+   // private int keys = 0;
     private bool isPlayerInTrigger = false;
+    private PlayerData data;
 
     void Start()
     {
+        GameObject playerdata = GameObject.Find("PlayerData");
+        data = playerdata.GetComponent<PlayerData>();
         keyPicture.SetActive(false);
         keyText2.SetActive(false);
         PickUpText.SetActive(false);
 
         keyText.GetComponent<TMP_Text>();
-        keys = 0;
-        keyText.text = "" + keys;
+        data.keys = 0;
+        keyText.text = "" + data.keys;
     }
     void Update()
     {
@@ -37,16 +41,15 @@ public class GetKey : MonoBehaviour
 
     public void AddKeys(int add)
     {
-        keys += add;
-        keyText.text = "" + keys;
-        Debug.Log(keys);
+        data.keys += add;
+        keyText.text = "" + data.keys;
+        Debug.Log(data.keys);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Player entered trigger");
             PickUpText.SetActive(true);
             isPlayerInTrigger = true;
         }
@@ -56,7 +59,6 @@ public class GetKey : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Player exited trigger");
             PickUpText.SetActive(false);
             isPlayerInTrigger = false;
         }
