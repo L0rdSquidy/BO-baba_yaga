@@ -50,6 +50,7 @@ public class Movement : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+
         }
 
         if (Time.timeScale == 1f)
