@@ -167,6 +167,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   teleport_exit: {x: 10, y: 0, z: 10}
+  UI: {fileID: 0}
 --- !u!1 &8378676209343425276
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,7 +257,8 @@ MonoBehaviour:
   Portalenter:
     m_PersistentCalls:
       m_Calls: []
-  teleport_exit: {x: 30, y: 0, z: 30}
+  teleport_exit: {x: 30, y: 100, z: 30}
+  UI: {fileID: 0}
 --- !u!54 &7293135731351142174
 Rigidbody:
   m_ObjectHideFlags: 0

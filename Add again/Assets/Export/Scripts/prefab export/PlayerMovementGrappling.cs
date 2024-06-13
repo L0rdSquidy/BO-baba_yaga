@@ -58,6 +58,8 @@ public class PlayerMovementGrappling : MonoBehaviour
     private HP hpScript;
 
     public GameObject UI;
+
+    public GameObject crosshair;
     
 
     public MovementState state;
@@ -94,6 +96,14 @@ public class PlayerMovementGrappling : MonoBehaviour
         //     Staminas.instance.UseStamina(1);
         // }
         // ground check
+        if (!grounded)
+        {
+           crosshair.SetActive(false); 
+        }
+        if (moveSpeed == walkSpeed && grounded)
+        {
+            crosshair.SetActive(true);
+        }
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
 
         MyInput();
@@ -199,6 +209,8 @@ public class PlayerMovementGrappling : MonoBehaviour
             
             state = MovementState.sprinting;
             moveSpeed = sprintSpeed;
+            
+            crosshair.SetActive(false);
             
              Debug.Log(stamina.StaminaDeplete());
 

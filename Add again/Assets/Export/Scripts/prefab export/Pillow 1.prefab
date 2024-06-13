@@ -166,4 +166,5 @@ MonoBehaviour:
   Portalenter:
     m_PersistentCalls:
       m_Calls: []
-  teleport_exit: {x: 10, y: 0, z: 10}
+  teleport_exit: {x: 10, y: 100, z: 10}
+  UI: {fileID: 0}

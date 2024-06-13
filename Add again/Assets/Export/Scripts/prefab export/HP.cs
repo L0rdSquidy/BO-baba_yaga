@@ -15,6 +15,8 @@ public class HP : MonoBehaviour
     public Vector3 teleport_exit;
 
     public GameObject UI;
+
+    public GameObject Deathscreen;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,8 +37,11 @@ public class HP : MonoBehaviour
         hp += add;
         scoreField.text = "" + hp;
         Hitcounter -= add;
+        if (hp > 0)
+        {
         UI.SetActive(true);
         StartCoroutine(HitCounterWait());
+        }
     }
 
     IEnumerator HitCounterWait()
@@ -50,6 +55,12 @@ public class HP : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (hp == 0)
+        {
+            player.SetActive(false);
+            Deathscreen.SetActive(true);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 }
