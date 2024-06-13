@@ -1,0 +1,4 @@
+repository "BO Baba Yaga@AFK_meliko@cloud"
+  path "/"
+    br "/main"
+    co "/main"
