@@ -104,7 +104,7 @@ public class PlayerMovementGrappling : MonoBehaviour
         if (grounded && !activeGrapple)
             rb.drag = groundDrag;
         else
-            rb.drag = 0;
+            rb.drag = 1;
 
         // TextStuff();
         Debug.Log(UI);
@@ -184,6 +184,8 @@ public class PlayerMovementGrappling : MonoBehaviour
         {
             state = MovementState.swinging;
             moveSpeed = swingSpeed;
+            rb.drag = 0;
+            
         }
 
         // Mode - Crouching
@@ -304,7 +306,7 @@ public class PlayerMovementGrappling : MonoBehaviour
         activeGrapple = true;
 
         velocityToSet = CalculateJumpVelocity(transform.position, targetPosition, trajectoryHeight);
-        Invoke(nameof(SetVelocity), 0.1f);
+        Invoke(nameof(SetVelocity), 0.01f);
 
         Invoke(nameof(ResetRestrictions), 3f);
     }
@@ -353,7 +355,7 @@ public class PlayerMovementGrappling : MonoBehaviour
 
     public Vector3 CalculateJumpVelocity(Vector3 startPoint, Vector3 endPoint, float trajectoryHeight)
     {
-        float gravity = Physics.gravity.y;
+        float gravity = Physics.gravity.y * 2;
         float displacementY = endPoint.y - startPoint.y;
         Vector3 displacementXZ = new Vector3(endPoint.x - startPoint.x, 0f, endPoint.z - startPoint.z);
 
