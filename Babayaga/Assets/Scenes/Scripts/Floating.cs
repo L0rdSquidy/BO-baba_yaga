@@ -22,11 +22,15 @@ public class Floating : MonoBehaviour
 
     bool underwater;
 
+    private RaiseWater water;
+
 
     // Start is called before the first frame update
     void Start()
     {
         N_rigidbody = GetComponent<Rigidbody>();
+
+        water = FindObjectOfType<RaiseWater>();
     }
 
     private Transform GetTransform()
@@ -34,9 +38,21 @@ public class Floating : MonoBehaviour
         return transform;
     }
 
+    public void Update()
+    {
+        if (water.returnraising() == true)
+        {
+            StartCoroutine(waitforSecond());
+        }
+        
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
+
+        
+
+
         float difference = transform.position.y - WaterHeight;
 
         if(difference < 0)
@@ -67,5 +83,12 @@ public class Floating : MonoBehaviour
             N_rigidbody.drag = airDrag;
             N_rigidbody.angularDrag = airAnglurDrag;
         }
+    }
+
+    IEnumerator waitforSecond() 
+    {
+        yield return new WaitForSeconds(2f);
+        WaterHeight = water.getwaterheigt() - 10;
+        
     }
 }
