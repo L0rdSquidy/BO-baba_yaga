@@ -88,7 +88,8 @@ public class Floating : MonoBehaviour
     IEnumerator waitforSecond() 
     {
         yield return new WaitForSeconds(2f);
-        WaterHeight = water.getwaterheigt() - 10;
+        WaterHeight = water.getwaterheigt() - 7;
+        floatingpower = 8f;
         
     }
 }
