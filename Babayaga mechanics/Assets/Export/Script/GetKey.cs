@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.SearchService;
+//sing UnityEditor.SearchService;
 using UnityEngine;
 
 public class GetKey : MonoBehaviour
